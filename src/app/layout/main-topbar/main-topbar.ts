@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  output,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Popover } from 'primeng/popover';
@@ -21,6 +28,8 @@ export class MainTopbar {
   results = signal<IOrderData[]>([]);
   searchQuery = signal('');
   searchEvent = signal<Event | null>(null);
+
+  menuClick = output<void>();
 
   searchPopover = viewChild.required<Popover>('searchPopover');
 
