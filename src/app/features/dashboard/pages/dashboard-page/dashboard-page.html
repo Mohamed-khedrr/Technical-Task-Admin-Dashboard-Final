@@ -1,0 +1,47 @@
+<main class="dashboard-page">
+  @if (!isPageLoaded()) {
+    <div class="page-loading">
+      <p-progress-spinner ariaLabel="loading" />
+    </div>
+  } @else {
+    <div class="analytics-header">
+      <h2 class="analytics-title">Analytics</h2>
+      <app-dashboard-date-filter (filterChange)="onFilterChange($event)" />
+    </div>
+
+    <div
+      class="analytics-cards-wrapper"
+      [attr.aria-busy]="analyticsCardLoading()"
+      aria-label="Analytics cards"
+    >
+      @if (analyticsCardLoading()) {
+        <div class="analytics-overlay" aria-hidden="true">
+          <span class="analytics-spinner" aria-hidden="true"></span>
+        </div>
+      }
+      <section class="analytics grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-4">
+        @for (card of analyticCards(); track card.label) {
+          <app-dashboard-analytic-card
+            [label]="card.label"
+            [value]="card.value"
+            [valueFormat]="card.valueFormat"
+            [change]="card.change"
+            [changePositive]="card.changePositive"
+            [iconSrc]="card.iconSrc"
+            [iconAlt]="card.iconAlt"
+          />
+        }
+      </section>
+    </div>
+
+    <section class="charts mt-5 grid grid-cols-1 gap-3.5 lg:grid-cols-3">
+      <div class="col-span-2">
+        <app-dashboard-line-chart />
+      </div>
+      <div class="col-span-1">
+        <app-dashboard-bar-chart />
+      </div>
+    </section>
+    <app-dashboard-recent-orders />
+  }
+</main>

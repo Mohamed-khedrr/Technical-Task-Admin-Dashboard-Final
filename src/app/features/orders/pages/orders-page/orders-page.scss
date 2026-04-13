@@ -1,0 +1,261 @@
+@use 'styles/index' as *;
+
+.orders-page {
+  padding: 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-family: $font-family-heading;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight-xl;
+  margin: 0;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: $font-family-heading;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-muted-alt;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: $color-primary;
+}
+
+.back-link:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.table-wrapper-outer {
+  position: relative;
+}
+
+.loading-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+
+  &.has-content {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 17px;
+    z-index: 10;
+  }
+}
+
+.loading-blur {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 16px 20px;
+  color: #991b1b;
+  font-family: $font-family-body;
+  font-size: $font-size-md;
+}
+
+.error-message p {
+  margin: 0;
+}
+
+.table-container {
+  background: $color-bg-white;
+  box-shadow: 0 21px 94px 0 rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  border-radius: 17px;
+
+  ::ng-deep {
+    .p-datatable {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 32px 24px;
+      // background-color: red;
+    }
+
+    .p-datatable-table-container {
+      overflow-x: auto;
+    }
+
+    .p-datatable-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .p-datatable-thead > tr > th {
+      background: $color-bg-table-header;
+      padding: 11px 16px;
+      font-family: $font-family-accent;
+      font-size: $font-size-base;
+      font-weight: $font-weight-bold;
+      color: $color-text-disabled;
+      text-align: start;
+      white-space: nowrap;
+      border: none;
+    }
+
+    .p-datatable-thead > tr > th:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+    .p-datatable-thead > tr > th:last-child {
+      border-radius: 0 4px 4px 0;
+    }
+
+    .p-datatable-tbody > tr:first-child > td {
+      padding-top: 20px;
+    }
+
+    .col-item {
+      width: 35%;
+      padding-left: 37px;
+      padding-right: 16px;
+    }
+    .col-qty {
+      width: 10%;
+    }
+    .col-date {
+      width: 22%;
+    }
+    .col-amount {
+      width: 18%;
+    }
+    .col-status {
+      width: 15%;
+      padding-left: 16px;
+      padding-right: 24px;
+    }
+
+    .p-datatable-tbody > tr {
+      background: transparent;
+      border-bottom: 1px solid $color-border-grid;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .p-datatable-tbody > tr.order-row {
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      &:hover {
+        background: $color-bg-table-header;
+        color: inherit;
+      }
+      &:focus-visible {
+        outline: 2px solid $color-primary;
+        outline-offset: -2px;
+      }
+    }
+
+    .p-datatable-tbody > tr > td {
+      padding: 10px 16px;
+      font-family: $font-family-accent;
+      font-size: $font-size-md;
+      color: $color-text-primary;
+      border: none;
+    }
+
+    .p-datatable-tbody > tr > td.col-date {
+      color: $color-text-muted;
+    }
+    .p-datatable-tbody > tr > td.col-amount {
+      color: $color-text-dark;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 16px;
+      color: $color-text-muted;
+      font-family: $font-family-body;
+      font-size: $font-size-md;
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 16px !important;
+  color: $color-text-muted;
+  font-family: $font-family-body;
+  font-size: $font-size-md;
+}
+
+.item-cell {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.item-img {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-surface-icon;
+}
+
+.item-name {
+  font-family: $font-family-accent;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  white-space: nowrap;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-family: $font-family-heading;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-bold;
+  letter-spacing: -0.27px;
+  white-space: nowrap;
+}
+
+.status-pending {
+  background: $color-status-pending-bg;
+  color: $color-status-pending-text;
+}
+
+.status-approved {
+  background: $color-status-approved-bg;
+  color: $color-status-approved-text;
+}
+
+.status-in-process {
+  background: $color-status-in-process-bg;
+  color: $color-status-in-process-text;
+}

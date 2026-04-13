@@ -1,0 +1,52 @@
+// Font Families
+$font-family-heading: 'League Spartan', sans-serif;
+$font-family-body: 'Renner*', sans-serif;
+$font-family-accent: 'Alata', sans-serif;
+
+// Font Sizes (from Figma)
+$font-size-2xs: 9px;
+$font-size-xs: 11px;
+$font-size-sm: 12px;
+$font-size-base: 13px;
+$font-size-md: 14px;
+$font-size-lg: 15px;
+$font-size-xl: 16px;
+$font-size-2xl: 17px;
+$font-size-3xl: 18px;
+$font-size-4xl: 20px;
+
+// Font Weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Letter Spacings (from Figma)
+$letter-spacing-tight-xl: -0.9px;
+$letter-spacing-tight-lg: -0.8px;
+$letter-spacing-snug: -0.15px;
+$letter-spacing-wide: 0.4px;
+
+:root {
+  --font-family-heading: #{$font-family-heading};
+  --font-family-body: #{$font-family-body};
+  --font-family-accent: #{$font-family-accent};
+  --font-size-2xs: #{$font-size-2xs};
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-base: #{$font-size-base};
+  --font-size-md: #{$font-size-md};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-xl: #{$font-size-xl};
+  --font-size-2xl: #{$font-size-2xl};
+  --font-size-3xl: #{$font-size-3xl};
+  --font-size-4xl: #{$font-size-4xl};
+  --font-weight-regular: #{$font-weight-regular};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-semibold: #{$font-weight-semibold};
+  --font-weight-bold: #{$font-weight-bold};
+  --letter-spacing-tight-xl: #{$letter-spacing-tight-xl};
+  --letter-spacing-tight-lg: #{$letter-spacing-tight-lg};
+  --letter-spacing-snug: #{$letter-spacing-snug};
+  --letter-spacing-wide: #{$letter-spacing-wide};
+}

@@ -1,0 +1,14 @@
+<a
+  [routerLink]="href()"
+  class="nav-link"
+  routerLinkActive="nav-link-active"
+  [routerLinkActiveOptions]="{ exact: href() === '/' }"
+>
+  <span class="nav-link-content">
+    <ng-content></ng-content>
+    <span>{{ label() }}</span>
+  </span>
+  @if (showDot()) {
+    <span class="nav-link-dot" aria-hidden="true"></span>
+  }
+</a>

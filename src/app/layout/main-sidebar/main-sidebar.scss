@@ -1,0 +1,105 @@
+@use 'styles/index' as *;
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 273px;
+  height: 100%;
+  background-color: $color-bg-white;
+  overflow-y: auto;
+  justify-content: space-between;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 25px 22px 31px;
+  margin-inline: 33px;
+}
+
+.sidebar-logo-text {
+  font-family: $font-family-accent;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-regular;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-snug;
+  white-space: nowrap;
+}
+
+.sidebar-logo-accent {
+  color: $color-primary;
+}
+
+.sidebar-nav,
+.sidebar-services {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 33px;
+  gap: 4px;
+}
+
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid $color-border-separator;
+  margin: 12px 33px;
+}
+
+.sidebar-company {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 33px 20px;
+  padding: 10px 13px;
+  background-color: $color-bg-sidebar-company;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sidebar-company-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 4px;
+  background-color: $color-border-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-heading;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-muted;
+  flex-shrink: 0;
+}
+
+.sidebar-company-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 3px;
+}
+
+.sidebar-company-name {
+  font-family: $font-family-heading;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-tight-lg;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
+
+.sidebar-company-label {
+  font-family: $font-family-body;
+  font-size: $font-size-sm;
+  color: $color-text-label;
+  letter-spacing: $letter-spacing-snug;
+  line-height: 1;
+}

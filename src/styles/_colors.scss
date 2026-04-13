@@ -1,0 +1,82 @@
+// Brand
+$color-primary: #0561fc;
+
+// Backgrounds
+$color-bg-page: #f8fafb;
+$color-bg-white: #ffffff;
+$color-bg-surface-icon: #e7edf0;
+$color-bg-sidebar-selected: #edf4ff;
+$color-bg-sidebar-company: #e9f0f3;
+$color-bg-table-header: #f7f9fa;
+$color-bg-danger: #fb7b7b;
+
+// Text
+$color-text-primary: #000000;
+$color-text-dark: #3c3c3c;
+$color-text-medium: #474747;
+$color-text-muted: #93a3ab;
+$color-text-muted-alt: #aeb9be;
+$color-text-disabled: #a6a9aa;
+$color-text-placeholder: #c4ccd0;
+$color-text-subtle: #9aa0a4;
+$color-text-label: #abb7bc;
+$color-text-dark-alt: #2c3e50;
+
+// Borders
+$color-border-light: #d2dce1;
+$color-border-separator: #e5e5e5;
+$color-border-grid: #f1f3f4;
+
+// Chart
+$color-chart-tooltip: #637eb4;
+
+// Status: Pending
+$color-status-pending-bg: #dff0ff;
+$color-status-pending-text: #0561fc;
+
+// Status: Approved
+$color-status-approved-bg: #e6fde6;
+$color-status-approved-text: #78c278;
+
+// Status: In Process
+$color-status-in-process-bg: #fff4df;
+$color-status-in-process-text: #faa86d;
+
+// Badges
+$color-badge-positive-bg: #e3f4e3;
+$color-badge-positive-text: #65c565;
+$color-badge-negative-bg: #f4e3e3;
+$color-badge-negative-text: #c56565;
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-bg-page: #{$color-bg-page};
+  --color-bg-white: #{$color-bg-white};
+  --color-bg-surface-icon: #{$color-bg-surface-icon};
+  --color-bg-sidebar-selected: #{$color-bg-sidebar-selected};
+  --color-bg-sidebar-company: #{$color-bg-sidebar-company};
+  --color-bg-table-header: #{$color-bg-table-header};
+  --color-text-primary: #{$color-text-primary};
+  --color-text-dark: #{$color-text-dark};
+  --color-text-medium: #{$color-text-medium};
+  --color-text-muted: #{$color-text-muted};
+  --color-text-muted-alt: #{$color-text-muted-alt};
+  --color-text-disabled: #{$color-text-disabled};
+  --color-text-placeholder: #{$color-text-placeholder};
+  --color-text-label: #{$color-text-label};
+  --color-text-dark-alt: #{$color-text-dark-alt};
+  --color-border-light: #{$color-border-light};
+  --color-border-separator: #{$color-border-separator};
+  --color-border-grid: #{$color-border-grid};
+  --color-chart-tooltip: #{$color-chart-tooltip};
+  --color-status-pending-bg: #{$color-status-pending-bg};
+  --color-status-pending-text: #{$color-status-pending-text};
+  --color-status-approved-bg: #{$color-status-approved-bg};
+  --color-status-approved-text: #{$color-status-approved-text};
+  --color-status-in-process-bg: #{$color-status-in-process-bg};
+  --color-status-in-process-text: #{$color-status-in-process-text};
+  --color-badge-positive-bg: #{$color-badge-positive-bg};
+  --color-badge-positive-text: #{$color-badge-positive-text};
+  --color-badge-negative-bg: #{$color-badge-negative-bg};
+  --color-badge-negative-text: #{$color-badge-negative-text};
+}

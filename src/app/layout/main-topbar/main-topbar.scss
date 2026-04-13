@@ -1,0 +1,217 @@
+@use 'styles/index' as *;
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 70px;
+  padding: 0 16px;
+  background-color: $color-bg-white;
+
+  @media (min-width: 1024px) {
+    padding: 0 30px;
+  }
+}
+
+.topbar-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: $color-text-primary;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.topbar-search {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 520px;
+  // padding-inline: 20px;
+  height: 44px;
+  background-color: transparent;
+  border-radius: 8px;
+  &::ng-deep {
+    box-shadow: none;
+    transition: border 0.3s;
+    font-size: $font-size-md;
+    font-family: $font-family-body;
+    input:not(:focus) {
+      background-color: $color-bg-page;
+      border-color: transparent;
+      outline-color: transparent;
+    }
+  }
+}
+
+.topbar-search-icon {
+  flex-shrink: 0;
+  color: $color-text-placeholder;
+}
+
+.topbar-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: $font-family-body;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.topbar-icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: $color-bg-surface-icon;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: $color-text-muted-alt;
+  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: $color-border-light;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.topbar-notification-dot {
+  position: absolute;
+  top: -3px;
+  inset-inline-end: -3px;
+  width: 11px;
+  height: 11px;
+  background-color: $color-bg-danger;
+  border-radius: 50%;
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 4px;
+  cursor: pointer;
+}
+
+.topbar-user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 6px;
+  background-color: $color-border-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-heading;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  color: $color-text-muted;
+  flex-shrink: 0;
+}
+
+.topbar-user-name {
+  font-family: $font-family-body;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: $letter-spacing-snug;
+  white-space: nowrap;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.topbar-user-chevron {
+  color: $color-text-muted;
+}
+
+:host ::ng-deep .search-popover {
+  width: 320px;
+
+  .p-popover-content {
+    padding: 6px 0;
+  }
+}
+
+.search-loading {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}
+
+.search-empty {
+  display: block;
+  padding: 12px 16px;
+  font-size: $font-size-md;
+  color: $color-text-muted;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  span {
+    font-family: $font-family-body;
+    font-size: $font-size-md;
+    color: $color-text-primary;
+  }
+
+  &:hover {
+    background-color: $color-bg-page;
+  }
+}

@@ -1,0 +1,57 @@
+<aside class="sidebar">
+  <nav>
+    <!-- Logo -->
+    <div class="sidebar-logo">
+      <img src="/icons/layres.svg" alt="Manager Pro logo" width="28" height="28" />
+      <span class="sidebar-logo-text"> Manager <span class="sidebar-logo-accent">Pro</span> </span>
+    </div>
+
+    <section class="sidebar-nav" aria-label="Main navigation">
+      <app-main-sidebar-link label="Dashboard" href="/">
+        <svg [size]="22" lucideHouse></svg>
+      </app-main-sidebar-link>
+      <app-main-sidebar-link label="Orders" href="/orders">
+        <svg [size]="22" lucideShoppingCart></svg>
+      </app-main-sidebar-link>
+      <app-main-sidebar-link label="Users" href="#">
+        <svg [size]="22" lucideUsers></svg>
+      </app-main-sidebar-link>
+      <app-main-sidebar-link label="Items" href="#">
+        <svg [size]="22" lucideStore></svg>
+      </app-main-sidebar-link>
+      <app-main-sidebar-link label="Transactions" href="#">
+        <svg [size]="22" lucideReceiptText></svg>
+      </app-main-sidebar-link>
+      <app-main-sidebar-link label="Reports" href="#">
+        <svg [size]="22" lucideFileChartColumn></svg>
+      </app-main-sidebar-link>
+    </section>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" aria-hidden="true" />
+
+    <section class="sidebar-services" aria-label="Services">
+      <app-main-sidebar-link label="Messages" href="#" [showDot]="true">
+        <svg lucideMessageCircleMore [size]="22"></svg>
+      </app-main-sidebar-link>
+      <app-main-sidebar-link label="Support" href="#">
+        <svg lucideLifeBuoy [size]="22"></svg>
+      </app-main-sidebar-link>
+      <app-main-sidebar-link label="Settings" href="#">
+        <svg lucideSettings [size]="22"></svg>
+      </app-main-sidebar-link>
+    </section>
+  </nav>
+
+  <!-- Company Card -->
+  <div class="sidebar-company">
+    <div class="sidebar-company-avatar" aria-hidden="true">
+      <img src="/images/company-logo.png" alt="" />
+    </div>
+    <div class="sidebar-company-info">
+      <span class="sidebar-company-name">&#64;Jabastinv</span>
+      <span class="sidebar-company-label">Company</span>
+    </div>
+    <svg lucideChevronRight [size]="16" class="text-(--color-text-muted-alt)"></svg>
+  </div>
+</aside>

@@ -1,0 +1,76 @@
+@use 'styles/index' as *;
+
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 70px 1fr;
+  height: 100vh;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 273px 1fr;
+  }
+}
+
+// Sidebar: fixed overlay on mobile/tablet, in-grid on desktop
+.layout-sidebar {
+  position: fixed;
+  top: 0;
+  left: -273px;
+  bottom: 0;
+  z-index: 40;
+  transition: left 0.25s ease;
+
+  @media (min-width: 1024px) {
+    position: static;
+    left: auto;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    transition: none;
+  }
+}
+
+.layout.sidebar-open .layout-sidebar {
+  left: 0;
+}
+
+.layout-topbar {
+  grid-column: 1;
+  grid-row: 1;
+
+  @media (min-width: 1024px) {
+    grid-column: 2;
+  }
+}
+
+.layout-content {
+  grid-column: 1;
+  grid-row: 2;
+  overflow-y: auto;
+  background-color: $color-bg-page;
+  padding: 16px;
+
+  @media (min-width: 1024px) {
+    grid-column: 2;
+    padding: 24px;
+  }
+}
+
+// Semi-transparent backdrop behind the sidebar overlay (mobile/tablet only)
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 30;
+}
+
+.layout.sidebar-open .sidebar-backdrop {
+  @media (max-width: 1023px) {
+    display: block;
+  }
+}

@@ -1,0 +1,63 @@
+@use 'styles/index' as *;
+
+.page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.analytics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-block: 13px;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.analytics-title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  font-family: $font-family-heading;
+  color: $color-text-dark;
+  line-height: normal;
+}
+
+.analytics-cards-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.analytics-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(248, 250, 251, 0.75);
+  border-radius: 17px;
+}
+
+.analytics-spinner {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #e5e7eb;
+  border-top-color: $color-primary;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

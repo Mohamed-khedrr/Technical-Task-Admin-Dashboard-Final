@@ -1,0 +1,88 @@
+<div class="orders-page">
+  <header class="page-header">
+    <h1 class="page-title">Orders</h1>
+    <a class="back-link" routerLink="/" aria-label="Back to Dashboard">
+      &#8592; Back to Dashboard
+    </a>
+  </header>
+
+  <div class="table-wrapper-outer">
+    @if (loading()) {
+      <div class="loading-overlay" [class.has-content]="orders().length > 0">
+        <p-progress-spinner ariaLabel="loading" />
+      </div>
+    }
+
+    <div
+      class="table-container"
+      [class]="{
+        'loading-blur': loading() && orders().length > 0,
+        hidden: loading() && orders().length === 0,
+      }"
+    >
+      <p-table
+        [value]="orders()"
+        [tableStyle]="{ 'min-width': '640px' }"
+        [paginator]="totalPages() > 1"
+        [rows]="pageSize"
+        [totalRecords]="totalOrders()"
+        [lazy]="true"
+        (onLazyLoad)="onLazyLoad($event)"
+        [first]="(currentPage() - 1) * pageSize"
+        aria-label="Orders list"
+      >
+        <ng-template #header>
+          <tr>
+            <th scope="col" class="col-item">Item Name</th>
+            <th scope="col" class="col-qty">Qty</th>
+            <th scope="col" class="col-date">Order Date</th>
+            <th scope="col" class="col-amount">Amount</th>
+            <th scope="col" class="col-status">Status</th>
+          </tr>
+        </ng-template>
+
+        <ng-template #body let-order>
+          <tr
+            class="order-row"
+            tabindex="0"
+            (click)="viewOrder(order.id)"
+            (keydown.enter)="viewOrder(order.id)"
+          >
+            <td class="col-item">
+              <div class="item-cell">
+                <img
+                  class="item-img"
+                  [src]="order.image"
+                  [alt]="order.name"
+                  width="37"
+                  height="37"
+                />
+                <span class="item-name">{{ order.name }}</span>
+              </div>
+            </td>
+            <td class="col-qty">{{ order.quantity }}</td>
+            <td class="col-date">{{ order.date | date: 'MMMM dd, yyyy' }}</td>
+            <td class="col-amount">
+              {{ order.totalPrice | currency: 'USD' : 'symbol' : '1.0-0' }}
+            </td>
+            <td class="col-status">
+              <span
+                class="status-badge"
+                [class.status-pending]="order.status === 'Pending'"
+                [class.status-approved]="order.status === 'Approved'"
+                [class.status-in-process]="order.status === 'In Process'"
+                >{{ order.status }}</span
+              >
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template #emptymessage>
+          <tr>
+            <td colspan="5" class="empty-state">No orders found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

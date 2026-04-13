@@ -1,0 +1,41 @@
+<div class="chart-card">
+  <div class="chart-header">
+    <div class="first-side">
+      <h2 class="chart-title">Report</h2>
+      <div class="card flex justify-center">
+        <p-select
+          [options]="selectOptions"
+          optionLabel="name"
+          optionValue="value"
+          placeholder="Type"
+          [ngModel]="selectedType()"
+          (onChange)="selectedType.set($event.value)"
+          class="flex w-22 max-w-full justify-between"
+        />
+      </div>
+    </div>
+
+    <div class="second-side">
+      <div class="card flex justify-center">
+        <p-selectbutton
+          [options]="stateOptions"
+          [ngModel]="selectedState()"
+          (onChange)="selectedState.set($event.value)"
+          optionLabel="label"
+          optionValue="value"
+          aria-labelledby="basic"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-container min-h-[220px]">
+    @defer (when !isLoading()) {
+      <div echarts [options]="chartOptions()" style="height: 220px"></div>
+    } @loading {
+      <output class="chart-loader" aria-label="Loading chart data">
+        <div class="chart-spinner"></div>
+      </output>
+    }
+  </div>
+</div>

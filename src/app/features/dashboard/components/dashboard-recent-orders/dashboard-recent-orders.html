@@ -1,0 +1,68 @@
+<section class="recent-orders">
+  <div class="orders-header">
+    <h2 class="orders-title">Recent Orders</h2>
+    <a class="go-to-orders-link" routerLink="/orders" aria-label="Go to orders page">
+      Go to Orders Page
+      <svg lucideArrowRight [size]="16" aria-hidden="true"></svg>
+    </a>
+  </div>
+
+  <div class="table-container">
+    <p-table
+      [value]="analyticsService.recentOrders()"
+      [rows]="pageSize"
+      [showFirstLastIcon]="false"
+      [tableStyle]="{ 'min-width': '640px' }"
+      aria-label="Recent orders list"
+      [loading]="false"
+    >
+      <ng-template #header>
+        <tr class="table-head-row">
+          <th scope="col" class="col-item">Item Name</th>
+          <th scope="col" class="col-qty">Qty</th>
+          <th scope="col" class="col-date">Order Date</th>
+          <th scope="col" class="col-amount">Amount</th>
+          <th scope="col" class="col-status">Status</th>
+        </tr>
+      </ng-template>
+
+      <ng-template #body let-order>
+        <tr
+          class="order-row"
+          (click)="viewOrder(order.id)"
+          (keydown.enter)="viewOrder(order.id)"
+          tabindex="0"
+        >
+          <td class="col-item">
+            <div class="item-cell">
+              <img
+                class="item-img"
+                [src]="order.image"
+                [alt]="order.itemImageAlt"
+                width="37"
+                height="37"
+              />
+              <span class="item-name">{{ order.name }}</span>
+            </div>
+          </td>
+          <td class="col-qty font-bold">{{ order.quantity }}</td>
+          <td class="col-date">
+            {{ order.date | date: 'MMMM dd, yyyy' }}
+          </td>
+          <td class="col-amount font-bold">
+            {{ order.totalPrice | currency: 'USD' : 'symbol' : '1.0-0' }}
+          </td>
+          <td class="col-status">
+            <span
+              class="status-badge"
+              [class.status-pending]="order.status === 'Pending'"
+              [class.status-approved]="order.status === 'Approved'"
+              [class.status-in-process]="order.status === 'In Process'"
+              >{{ order.status }}</span
+            >
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</section>

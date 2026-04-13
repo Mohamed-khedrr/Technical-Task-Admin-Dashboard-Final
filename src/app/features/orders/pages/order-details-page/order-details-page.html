@@ -1,0 +1,79 @@
+<div class="detail-page">
+  <button class="back-btn" type="button" (click)="goBack()">&#8592; Back to Orders</button>
+
+  @if (error()) {
+    <div class="error-message" role="alert" aria-live="assertive">
+      <p>{{ error() }}</p>
+      <button class="back-btn back-btn-error" type="button" (click)="goBack()">
+        &#8592; Back to Orders
+      </button>
+    </div>
+  }
+
+  @if (loading() && !order()) {
+    <div class="loading-initial">
+      <p-progress-spinner ariaLabel="loading" />
+    </div>
+  }
+  @if (order()) {
+    <div class="card-wrapper" [class.card-wrapper--loading]="loading()">
+      @if (loading()) {
+        <div class="card-overlay">
+          <p-progress-spinner ariaLabel="loading" />
+        </div>
+      }
+      <article class="detail-card" aria-label="Order details">
+        <header class="detail-card-header">
+          <h1 class="detail-order-id">Order #{{ order()!.id }}</h1>
+          <span
+            class="status-badge"
+            [class.status-pending]="order()!.status === 'Pending'"
+            [class.status-approved]="order()!.status === 'Approved'"
+            [class.status-in-process]="order()!.status === 'In Process'"
+            >{{ order()!.status }}</span
+          >
+        </header>
+
+        <div class="detail-item-section">
+          <img
+            class="detail-image"
+            [src]="order()!.image"
+            [alt]="order()!.name"
+            width="80"
+            height="80"
+          />
+          <h2 class="detail-item-name">{{ order()!.name }}</h2>
+        </div>
+
+        <dl class="detail-grid">
+          <div class="detail-field">
+            <dt class="detail-label">Quantity</dt>
+            <dd class="detail-value">{{ order()!.quantity }}</dd>
+          </div>
+          <div class="detail-field">
+            <dt class="detail-label">Order Date</dt>
+            <dd class="detail-value">{{ order()!.date | date: 'MMMM dd, yyyy' }}</dd>
+          </div>
+          <div class="detail-field">
+            <dt class="detail-label">Price</dt>
+            <dd class="detail-value detail-value-amount">
+              {{ order()!.totalPrice | currency: 'USD' : 'symbol' : '1.0-0' }}
+            </dd>
+          </div>
+          <div class="detail-field">
+            <dt class="detail-label">Status</dt>
+            <dd class="detail-value">
+              <span
+                class="status-badge"
+                [class.status-pending]="order()!.status === 'Pending'"
+                [class.status-approved]="order()!.status === 'Approved'"
+                [class.status-in-process]="order()!.status === 'In Process'"
+                >{{ order()!.status }}</span
+              >
+            </dd>
+          </div>
+        </dl>
+      </article>
+    </div>
+  }
+</div>

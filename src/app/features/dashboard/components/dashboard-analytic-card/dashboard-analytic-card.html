@@ -1,0 +1,22 @@
+<div class="analytic-card">
+  <div class="icon-container">
+    <img class="icon-img" [src]="iconSrc()" [alt]="iconAlt()" />
+  </div>
+  <div class="card-content">
+    <div class="card-text">
+      <span class="card-label">{{ label() }}</span>
+      @if (valueFormat() === 'currency') {
+        <span class="card-value">{{ value() | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
+      } @else {
+        <span class="card-value">{{ value() | number: '1.0-0' }}</span>
+      }
+    </div>
+    <span
+      class="card-badge"
+      [class.card-badge-positive]="changePositive()"
+      [class.card-badge-negative]="!changePositive()"
+      [class.opacity-0]="!change()"
+      >{{ change() }}</span
+    >
+  </div>
+</div>

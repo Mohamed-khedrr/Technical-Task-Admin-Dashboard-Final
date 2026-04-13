@@ -1,0 +1,56 @@
+@use 'styles/index' as *;
+
+.date-filter {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @media (max-width: 640px) {
+    display: grid;
+    .date-filter-custom {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .date-filter-range {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .date-filter-label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-text-muted;
+  }
+
+  .date-filter-select {
+    min-width: 10rem;
+  }
+
+  .date-filter-custom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .date-filter-custom-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  ::ng-deep {
+    .p-select-label,
+    input {
+      padding-block: 5px;
+      font-size: 12px;
+    }
+    .p-select-list-container,
+    .p-datepicker-day-view {
+      font-size: 12px;
+    }
+  }
+}

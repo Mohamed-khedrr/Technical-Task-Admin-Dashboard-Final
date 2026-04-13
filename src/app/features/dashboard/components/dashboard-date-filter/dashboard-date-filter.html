@@ -1,0 +1,40 @@
+<div class="date-filter" role="search" aria-label="Filter dashboard data by date">
+  <div class="date-filter-range">
+    <!-- <label for="date-range-select" class="date-filter-label">Date Range</label> -->
+    <p-select
+      inputId="date-range-select"
+      [options]="rangeOptions"
+      [ngModel]="selectedRange()"
+      (ngModelChange)="onRangeChange($event)"
+      optionLabel="label"
+      optionValue="value"
+      class="date-filter-select"
+      aria-label="Select date range"
+    />
+  </div>
+
+  @if (isCustom()) {
+    <div class="date-filter-custom" role="group" aria-label="Custom date range">
+      <div class="date-filter-custom-field">
+        <p-datepicker
+          inputId="custom-start"
+          [ngModel]="customStart()"
+          (ngModelChange)="onCustomStartChange($event)"
+          dateFormat="mm/dd/yy"
+          placeholder="Start date"
+          aria-label="Start date"
+        />
+      </div>
+      <div class="date-filter-custom-field">
+        <p-datepicker
+          inputId="custom-end"
+          [ngModel]="customEnd()"
+          (ngModelChange)="onCustomEndChange($event)"
+          dateFormat="mm/dd/yy"
+          placeholder="End date"
+          aria-label="End date"
+        />
+      </div>
+    </div>
+  }
+</div>
