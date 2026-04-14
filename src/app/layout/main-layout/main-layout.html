@@ -1,10 +1,10 @@
-<div class="layout" [class.sidebar-open]="sidebarOpen()">
-  <div class="sidebar-backdrop" (click)="closeSidebar()" aria-hidden="true"></div>
+<div class="layout" [class.sidebar-open]="sideStore.sidebarOpen()">
+  <div class="sidebar-backdrop" (click)="sideStore.closeSidebar()" aria-hidden="true"></div>
 
   <app-main-sidebar class="layout-sidebar"></app-main-sidebar>
 
   <header class="layout-topbar">
-    <app-main-topbar (menuClick)="toggleSidebar()"></app-main-topbar>
+    <app-main-topbar (menuClick)="sideStore.toggleSidebar()"></app-main-topbar>
   </header>
 
   <main class="layout-content">

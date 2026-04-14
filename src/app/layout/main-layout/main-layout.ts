@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { SidebarStore } from '../../core/stores/sidebar-store';
 
 @Component({
   selector: 'app-main-layout',
@@ -8,13 +9,5 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayout {
-  sidebarOpen = signal(false);
-
-  toggleSidebar(): void {
-    this.sidebarOpen.update(v => !v);
-  }
-
-  closeSidebar(): void {
-    this.sidebarOpen.set(false);
-  }
+  sideStore = inject(SidebarStore)
 }

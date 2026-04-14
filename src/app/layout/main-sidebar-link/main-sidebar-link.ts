@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { SidebarStore } from '../../core/stores/sidebar-store';
 
 @Component({
   selector: 'app-main-sidebar-link',
@@ -8,6 +9,8 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainSidebarLink {
+  sideStore = inject(SidebarStore);
+
   label = input.required<string>();
   href = input<string>('#');
   showDot = input<boolean>(false);

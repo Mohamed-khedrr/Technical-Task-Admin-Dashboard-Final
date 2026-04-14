@@ -8,31 +8,25 @@
       <p-inputicon>
         <svg [size]="18" lucideSearch></svg>
       </p-inputicon>
-      <input
-        #searchInput
-        type="text"
-        pInputText
-        class="w-full border-0 outline-0"
-        placeholder="Search"
-        (input)="onSearch($event)"
-      />
+      <input #searchInput type="text" pInputText class="w-full border-0 outline-0" placeholder="Search"
+        (input)="onSearch($event)" />
     </p-iconfield>
   </div>
 
   <p-popover #searchPopover [dismissable]="true" styleClass="search-popover" [appendTo]="search">
     @if (isSearchLoading()) {
-      <div class="search-loading">
-        <p-progressSpinner strokeWidth="4" [style]="{ width: '24px', height: '24px' }" />
-      </div>
+    <div class="search-loading">
+      <p-progressSpinner strokeWidth="4" [style]="{ width: '24px', height: '24px' }" />
+    </div>
     } @else {
-      @for (item of results(); track item.name) {
-        <button class="search-item w-full" (click)="viewOrder(item.id)">
-          <img [src]="item.image" [alt]="item.name" width="32" height="32" />
-          <span>{{ item.name }}</span>
-        </button>
-      } @empty {
-        <span class="search-empty">No results found</span>
-      }
+    @for (item of results(); track item.name) {
+    <button class="search-item w-full" (click)="viewOrder(item.id)">
+      <img [src]="item.image" [alt]="item.name" width="32" height="32" />
+      <span>{{ item.name }}</span>
+    </button>
+    } @empty {
+    <span class="search-empty">No results found</span>
+    }
     }
   </p-popover>
 
@@ -48,13 +42,8 @@
 
     <div class="topbar-user">
       <div class="topbar-user-avatar overflow-hidden" aria-hidden="true">
-        <img
-          ngSrc="/images/avatar-user.png"
-          alt="User Avatar"
-          class="max-h-full min-h-full max-w-full object-cover"
-          width="35"
-          height="35"
-        />
+        <img ngSrc="/images/avatar-user.png" alt="User Avatar" class="max-h-full min-h-full max-w-full object-cover"
+          width="35" height="35" />
       </div>
       <span class="topbar-user-name">Johny Larsen</span>
     </div>

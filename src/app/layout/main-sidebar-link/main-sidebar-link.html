@@ -3,6 +3,7 @@
   class="nav-link"
   routerLinkActive="nav-link-active"
   [routerLinkActiveOptions]="{ exact: href() === '/' }"
+  (click)="sideStore.closeSidebar()"
 >
   <span class="nav-link-content">
     <ng-content></ng-content>
